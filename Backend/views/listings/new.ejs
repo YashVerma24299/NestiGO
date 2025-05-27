@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NestiGo</title>
+</head>
+<body>
+    <h3>Create New Listing</h3>
+    <form method="post" action="/listings">
+        <input type="text" name="listing[title]" placeholder="Enter title">
+        <br><br>
+        <textarea name="listing[description]" placeholder="Enter description"></textarea>
+        <br><br>
+        <input name="listing[image]" placeholder="Enter image Url" type="text">
+        <br><br>
+        <input type="number" name="listing[price]" placeholder="Enter price">
+        <br><br>
+        <input type="text" name="listing[location]" placeholder="Enter location">
+        <br><br>
+        <input type="text" name="listing[country]" placeholder="Enter country">
+        <br><br>
+        <button>Add</button>
+        
+    </form>
+    
+</body>
+</html>
