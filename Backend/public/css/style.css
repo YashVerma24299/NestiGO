@@ -76,8 +76,8 @@ body{
     background-color: #fff;
 }
 
-/* Create new Listing */
-.add-btn{
+/* Create new Listing  and Edit a Listing*/
+.add-btn,.edit-btn{
     background-color: rgb(216, 40, 49) !important;
     border: none !important;
 }
