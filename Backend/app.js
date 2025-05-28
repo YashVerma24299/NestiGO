@@ -35,6 +35,28 @@ app.use(express.urlencoded({extended: true}));
 const methodOverride = require('method-override');
 app.use(methodOverride("_method"));
 
+//ejs-mate also prefer include/partial
+//it  used for repetetive code in ejs files
+//like header, footer, navbar etc.
+const ejsMate = require('ejs-mate');
+app.engine('ejs', ejsMate);
+app.use(express.static(path.join(__dirname, 'public')));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 app.get('/', (req,res)=>{
     res.send("Root")
