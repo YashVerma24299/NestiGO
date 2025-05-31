@@ -130,6 +130,8 @@ app.delete('/listings/:id', wrapAsync(async (req,res)=>{
 }));
 
 
+
+// Reviews
 const validateReview = (req, res, next) => {
     let {error}=reviewSchema.validate(req.body);
     if(error){
@@ -139,7 +141,6 @@ const validateReview = (req, res, next) => {
         next();
     }
 }
-// Reviews
 app.post('/listings/:id/reviews', validateReview, wrapAsync(
     async (req,res) =>{
     let listing = await Listing.findById(req.params.id);
@@ -153,6 +154,16 @@ app.post('/listings/:id/reviews', validateReview, wrapAsync(
     // res.send("Review added successfully");
     res.redirect(`/listings/${listing._id}`);
 }));
+//delete
+app.delete('/listings/:id/reviews/:reviewId', wrapAsync(async (req,res)=>{
+    let {id, reviewId} = req.params;
+    await Listing.findByIdAndUpdate(id, {$pull: {reviews: reviewId}});
+    await Review.findById(reviewId);
+    res.redirect(`/listings/${id}`);
+}));
+
+
+
 
 
 //error handling
