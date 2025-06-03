@@ -7,7 +7,7 @@ const methodOverride = require('method-override');
 const ejsMate = require('ejs-mate');
 const session = require("express-session");
 const flash = require("connect-flash");
-const passport =require("passport");
+const passport =require("passport"); // Passport's sole purpose is to authenticate requests,
 const LocalStrategy =require("passport-local")
 const User = require('./models/user.js');
 
@@ -76,19 +76,6 @@ app.use((req,res,next) =>{
 })
 
 
-// For listing routes
-const listingRouter = require('./routes/listing.js');
-app.use('/listings', listingRouter);
-
-// For review routes
-const reviewRouter = require('./routes/review.js');
-app.use('/listings/:id/reviews', reviewRouter);
-
-// For user routes
-const userRouter = require('./routes/user.js');
-app.use('/', userRouter);
-
-
 //error handling
 // app.all('*', (req, res, next) => {
 //     next(new ExpressError(404, 'Page Not Found'));
@@ -115,3 +102,17 @@ passport.deserializeUser(User.deserializeUser());
 //     //QWERTY is a password
 //     res.send(registeredUser);
 // })
+
+
+
+// For listing routes
+const listingRouter = require('./routes/listing.js');
+app.use('/listings', listingRouter);
+
+// For review routes
+const reviewRouter = require('./routes/review.js');
+app.use('/listings/:id/reviews', reviewRouter);
+
+// For user routes
+const userRouter = require('./routes/user.js');
+app.use('/', userRouter);
