@@ -67,25 +67,6 @@ const sessionOptions ={
 app.use(session(sessionOptions));
 
 
-// connect-flash
-app.use(flash());
-app.use((req,res,next) =>{
-    res.locals.success = req.flash("success");
-    res.locals.error = req.flash("error");
-    next();
-})
-
-
-//error handling
-// app.all('*', (req, res, next) => {
-//     next(new ExpressError(404, 'Page Not Found'));
-// });
-app.use((err, req, res, next) => {
-    let { statusCode = 500, message = "Something went wrong" } = err;
-    res.status(statusCode).render("error.ejs", { message });
-});
-
-
 //passport -> for Login/signup
 app.use(passport.initialize());
 app.use(passport.session());
@@ -102,6 +83,26 @@ passport.deserializeUser(User.deserializeUser());
 //     //QWERTY is a password
 //     res.send(registeredUser);
 // })
+
+
+// connect-flash
+app.use(flash());
+app.use((req,res,next) =>{
+    res.locals.success = req.flash("success");
+    res.locals.error = req.flash("error");
+    res.locals.currUser = req.user;
+    next();
+})
+
+
+//error handling
+// app.all('*', (req, res, next) => {
+//     next(new ExpressError(404, 'Page Not Found'));
+// });
+app.use((err, req, res, next) => {
+    let { statusCode = 500, message = "Something went wrong" } = err;
+    res.status(statusCode).render("error.ejs", { message });
+});
 
 
 
