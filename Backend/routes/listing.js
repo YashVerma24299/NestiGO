@@ -20,16 +20,13 @@ router.get('/new', isLoggedIn, listingController.renderNewForm)
 router.get('/:id',wrapAsync( listingController.showListing));
 
 //Create Route
-// router.post('/', validateListing , wrapAsync(listingController.createListing));
-router.post(('/'), upload.single('listing[image]'), (req,res)=>{
-    res.send(req.file);
-})
+router.post('/', isLoggedIn, upload.single('listing[image]'), validateListing , wrapAsync(listingController.createListing));
 
 //edit route
 router.get('/:id/edit',isLoggedIn, isOwner, wrapAsync(listingController.renderEditForm));
 
 //update route
-router.put('/:id',isLoggedIn, isOwner, validateListing, wrapAsync(listingController.updateListing));
+router.put('/:id',isLoggedIn, isOwner,upload.single('listing[image]'), validateListing, wrapAsync(listingController.updateListing));
 
 //delete route
 router.delete('/:id',isLoggedIn, isOwner, wrapAsync(listingController.destroyListing));
