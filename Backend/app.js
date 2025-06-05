@@ -52,9 +52,9 @@ main()
     .catch((err) =>{
         console.log(err);
     });
-app.get('/', (req,res)=>{
-    res.send("Root")
-})
+// app.get('/', (req,res)=>{
+//     res.send("Root")
+// })
 
 
 // Using Session adding cookie and many more.....

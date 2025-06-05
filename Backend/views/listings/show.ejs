@@ -41,10 +41,10 @@
                 </div>
             <% } %>
             
-            <div class="col-8 offset-3">
+            <div class="col-6 offset-3">
                 <hr>
                 <% if(currUser) { %>
-                <h4>Leave a Review</h4>
+                <h4 class="text-center">Leave a Review</h4>
                 <form method="post" action="/listings/<%= listing._id %>/reviews" novalidate class="needs-validation">
                     <div class="mb-3 mt-3">
                     <label for="rating" class="form-label">Rating</label>
