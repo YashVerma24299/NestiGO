@@ -37,8 +37,8 @@ app.listen(port, () =>{
     console.log('Server is running on port ' + port);
 });
 
-// monogodb
-const mongo_url = 'mongodb://127.0.0.1:27017/nestigo';
+
+const mongo_url = process.env.ATLASDB_URL;
 async function main(){
     //"NestiGo" is a blend of two words:
     //Nest – symbolizes home, comfort, a safe place to stay.
@@ -55,6 +55,20 @@ main()
 // app.get('/', (req,res)=>{
 //     res.send("Root")
 // })
+
+
+// const initdata = require('./init/data.js');
+// const Listing = require('./models/listing.js');
+// const initDB = async () => {
+//     await Listing.deleteMany({});
+//     initdata.data = initdata.data.map((obj) => ({
+//         ...obj,
+//         owner: "686170665a38ca36971043ef",
+//     }));
+//     await Listing.insertMany(initdata.data);
+//     console.log("Database initialized with sample data");
+// }
+// initDB(); 
 
 
 // Using Session adding cookie and many more.....
