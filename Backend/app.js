@@ -52,9 +52,9 @@ main()
     .catch((err) =>{
         console.log(err);
     });
-// app.get('/', (req,res)=>{
-//     res.send("Root")
-// })
+app.get('/', (req,res)=>{
+    res.redirect("/listings")
+})
 
 
 // const initdata = require('./init/data.js');
